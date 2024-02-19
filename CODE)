@@ -12,6 +12,7 @@ if inp.lower() == "y":
     print("Чтобы начать, нажмите Enter")
     input()
 
+
     if inp == "3.14159265358979323846":
         usin = int(input("какое число я загадал?"))
         if usin == ranth:
